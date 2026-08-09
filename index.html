@@ -145,8 +145,8 @@
     /* Class cards */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 16px;
     }
     .card {
       background: var(--card);
@@ -155,14 +155,16 @@
       box-shadow: var(--shadow);
       overflow: hidden;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: stretch;
     }
     .card-head {
-      padding: 18px 20px;
-      border-bottom: 1px solid var(--line);
+      padding: 20px 22px;
+      border-right: 1px solid var(--line);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 14px;
+      flex: 0 0 40%;
     }
     .date-badge {
       flex: 0 0 auto;
@@ -180,7 +182,6 @@
     .clase-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand); margin-bottom: 3px; }
     .card-head h3 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.25; }
     .card-head .weekday { margin: 3px 0 0; font-size: 13px; color: var(--muted); }
-    .topic-desc { margin: 0; font-size: 13px; color: var(--muted); }
     .time-chip {
       display: inline-block;
       margin-top: 7px;
@@ -192,13 +193,20 @@
       color: var(--brand);
     }
 
-    .card-body { padding: 16px 20px 20px; display: grid; gap: 12px; }
+    .card-body {
+      flex: 1;
+      padding: 18px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
     .resource {
       display: flex;
+      flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 6px 12px;
+      gap: 12px;
       font-size: 14px;
     }
     .resource .label {
@@ -208,6 +216,7 @@
       color: #334155;
       font-weight: 600;
       min-width: 0;
+      white-space: nowrap;
     }
     .resource .label svg { width: 16px; height: 16px; flex: 0 0 auto; color: var(--brand); }
     .pending {
@@ -243,9 +252,13 @@
       padding: 32px 20px 48px;
     }
 
+    @media (max-width: 720px) {
+      .card { flex-direction: column; }
+      .card-head { border-right: none; border-bottom: 1px solid var(--line); flex-basis: auto; }
+      .card-body { grid-template-columns: 1fr; }
+    }
     @media (max-width: 480px) {
       header { padding: 48px 20px 60px; }
-      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -293,12 +306,12 @@
     // Class definitions. The recording password ("password") and slides are filled after each class.
     // To publish a resource, replace null with the value, e.g. password: "aB3$x9", slides: "https://..."
     const classes = [
-      { n: 1, day: 12, weekday: "Miércoles", time: "8:00 p. m.", title: "Marketing digital con IA",     desc: "Cliente, contenido y redes que venden", zoom: ZOOM, password: null, slides: null },
-      { n: 2, day: 14, weekday: "Viernes",   time: "8:00 p. m.", title: "E-commerce: vende en línea",    desc: "Canales, ficha de producto y WhatsApp", zoom: ZOOM, password: null, slides: null },
-      { n: 3, day: 15, weekday: "Sábado",    time: "8:00 a. m.", title: "Compara y domina las IA",       desc: "ChatGPT, Gemini, Claude y prompts",     zoom: ZOOM, password: null, slides: null },
-      { n: 4, day: 19, weekday: "Miércoles", time: "8:00 p. m.", title: "Tus documentos y visuales",     desc: "NotebookLM y creación de imágenes",     zoom: ZOOM, password: null, slides: null },
-      { n: 5, day: 21, weekday: "Viernes",   time: "8:00 p. m.", title: "Ventas, métricas y asistente",  desc: "Looker Studio y tu asistente (Gems)",   zoom: ZOOM, password: null, slides: null },
-      { n: 6, day: 22, weekday: "Sábado",    time: "8:00 a. m.", title: "Tu catálogo web y cobros",      desc: "Tu página web con botón a WhatsApp",    zoom: ZOOM, password: null, slides: null }
+      { n: 1, day: 12, weekday: "Miércoles", time: "8:00 p. m.", title: "Marketing digital con IA",    zoom: ZOOM, password: null, slides: null },
+      { n: 2, day: 14, weekday: "Viernes",   time: "8:00 p. m.", title: "E-commerce: vende en línea",   zoom: ZOOM, password: null, slides: null },
+      { n: 3, day: 15, weekday: "Sábado",    time: "8:00 a. m.", title: "Compara y domina las IA",      zoom: ZOOM, password: null, slides: null },
+      { n: 4, day: 19, weekday: "Miércoles", time: "8:00 p. m.", title: "Tus documentos y visuales",    zoom: ZOOM, password: null, slides: null },
+      { n: 5, day: 21, weekday: "Viernes",   time: "8:00 p. m.", title: "Ventas, métricas y asistente", zoom: ZOOM, password: null, slides: null },
+      { n: 6, day: 22, weekday: "Sábado",    time: "8:00 a. m.", title: "Tu catálogo web y cobros",     zoom: ZOOM, password: null, slides: null }
     ];
 
     const PENDING = '<span class="pending">Disponible después de la clase</span>';
@@ -326,7 +339,6 @@
             '</div>' +
           '</div>' +
           '<div class="card-body">' +
-            '<p class="topic-desc">' + c.desc + '</p>' +
             resourceRow(icoVideo, 'Enlace de Zoom', c.zoom, true) +
             resourceRow(icoKey, 'Contraseña de grabación', c.password, false) +
             resourceRow(icoSlides, 'Diapositivas', c.slides, true) +
