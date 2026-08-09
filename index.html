@@ -176,8 +176,11 @@
     }
     .date-badge .day { display: block; font-size: 22px; font-weight: 800; }
     .date-badge .mon { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
-    .card-head h3 { margin: 0; font-size: 16px; font-weight: 700; }
-    .card-head .weekday { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+    .card-head-text { min-width: 0; }
+    .clase-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand); margin-bottom: 3px; }
+    .card-head h3 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.25; }
+    .card-head .weekday { margin: 3px 0 0; font-size: 13px; color: var(--muted); }
+    .topic-desc { margin: 0; font-size: 13px; color: var(--muted); }
     .time-chip {
       display: inline-block;
       margin-top: 7px;
@@ -290,12 +293,12 @@
     // Class definitions. The recording password ("password") and slides are filled after each class.
     // To publish a resource, replace null with the value, e.g. password: "aB3$x9", slides: "https://..."
     const classes = [
-      { n: 1, day: 12, weekday: "Miércoles", time: "8:00 p. m.", zoom: ZOOM, password: null, slides: null },
-      { n: 2, day: 14, weekday: "Viernes",   time: "8:00 p. m.", zoom: ZOOM, password: null, slides: null },
-      { n: 3, day: 15, weekday: "Sábado",    time: "8:00 a. m.", zoom: ZOOM, password: null, slides: null },
-      { n: 4, day: 19, weekday: "Miércoles", time: "8:00 p. m.", zoom: ZOOM, password: null, slides: null },
-      { n: 5, day: 21, weekday: "Viernes",   time: "8:00 p. m.", zoom: ZOOM, password: null, slides: null },
-      { n: 6, day: 22, weekday: "Sábado",    time: "8:00 a. m.", zoom: ZOOM, password: null, slides: null }
+      { n: 1, day: 12, weekday: "Miércoles", time: "8:00 p. m.", title: "Marketing digital con IA",     desc: "Cliente, contenido y redes que venden", zoom: ZOOM, password: null, slides: null },
+      { n: 2, day: 14, weekday: "Viernes",   time: "8:00 p. m.", title: "E-commerce: vende en línea",    desc: "Canales, ficha de producto y WhatsApp", zoom: ZOOM, password: null, slides: null },
+      { n: 3, day: 15, weekday: "Sábado",    time: "8:00 a. m.", title: "Compara y domina las IA",       desc: "ChatGPT, Gemini, Claude y prompts",     zoom: ZOOM, password: null, slides: null },
+      { n: 4, day: 19, weekday: "Miércoles", time: "8:00 p. m.", title: "Tus documentos y visuales",     desc: "NotebookLM y creación de imágenes",     zoom: ZOOM, password: null, slides: null },
+      { n: 5, day: 21, weekday: "Viernes",   time: "8:00 p. m.", title: "Ventas, métricas y asistente",  desc: "Looker Studio y tu asistente (Gems)",   zoom: ZOOM, password: null, slides: null },
+      { n: 6, day: 22, weekday: "Sábado",    time: "8:00 a. m.", title: "Tu catálogo web y cobros",      desc: "Tu página web con botón a WhatsApp",    zoom: ZOOM, password: null, slides: null }
     ];
 
     const PENDING = '<span class="pending">Disponible después de la clase</span>';
@@ -316,10 +319,14 @@
         '<article class="card">' +
           '<div class="card-head">' +
             '<div class="date-badge"><span class="day">' + c.day + '</span><span class="mon">Ago</span></div>' +
-            '<div><h3>Clase ' + c.n + '</h3><p class="weekday">' + c.weekday + ' · ' + c.day + ' de agosto de 2026</p>' +
-              '<span class="time-chip">🕗 ' + c.time + '</span></div>' +
+            '<div class="card-head-text">' +
+              '<span class="clase-label">Clase ' + c.n + '</span>' +
+              '<h3>' + c.title + '</h3>' +
+              '<p class="weekday">' + c.weekday + ' · ' + c.day + ' de agosto · ' + c.time + '</p>' +
+            '</div>' +
           '</div>' +
           '<div class="card-body">' +
+            '<p class="topic-desc">' + c.desc + '</p>' +
             resourceRow(icoVideo, 'Enlace de Zoom', c.zoom, true) +
             resourceRow(icoKey, 'Contraseña de grabación', c.password, false) +
             resourceRow(icoSlides, 'Diapositivas', c.slides, true) +
