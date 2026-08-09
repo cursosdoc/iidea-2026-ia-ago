@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Capacitación en IA · Fundación Nikols</title>
+  <meta name="description" content="Recursos de la capacitación en Inteligencia Artificial aplicada al emprendimiento y las ventas — Fundación Nikols e IIDEA." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #1e293b;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --brand: #2563eb;
+      --brand-soft: #dbeafe;
+      --pending-bg: #fef3c7;
+      --pending-ink: #92400e;
+      --radius: 16px;
+      --shadow: 0 1px 3px rgba(15,23,42,.08), 0 8px 24px rgba(15,23,42,.06);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: #f8fafc;
+      line-height: 1.6;
+    }
+    a { color: var(--brand); }
+
+    /* Header */
+    header {
+      background: radial-gradient(1200px 400px at 20% -10%, #1d4ed8 0%, transparent 60%), linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
+      color: #fff;
+      padding: 64px 24px 72px;
+      text-align: center;
+    }
+    header .eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      background: rgba(37,99,235,.18);
+      border: 1px solid rgba(147,197,253,.35);
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      margin: 0 auto 12px;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.15;
+      max-width: 820px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    header p {
+      margin: 0 auto;
+      max-width: 640px;
+      color: #cbd5e1;
+      font-size: 18px;
+    }
+    header .meta {
+      margin-top: 24px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      color: #e2e8f0;
+      font-size: 14px;
+    }
+    header .meta span {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+
+    /* Big Zoom note */
+    .zoom-note {
+      position: relative;
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 14px 34px rgba(37,99,235,.32);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .zoom-note-icon { font-size: 30px; line-height: 1; }
+    .zoom-note-body { flex: 1; min-width: 0; }
+    .zoom-note h2 { margin: 0 0 6px; font-size: 22px; font-weight: 800; letter-spacing: -.01em; }
+    .zoom-note p.lead { margin: 0 0 16px; color: #dbeafe; font-size: 15px; }
+    .zoom-btn {
+      display: inline-block;
+      background: #fff;
+      color: #1d4ed8;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+    .zoom-btn:hover { background: #eff6ff; }
+    .zoom-creds { display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0 0; }
+    .zoom-creds > div {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 10px;
+      padding: 10px 16px;
+    }
+    .zoom-creds span { display: block; font-size: 11px; color: #bfdbfe; text-transform: uppercase; letter-spacing: .05em; }
+    .zoom-creds strong { font-size: 18px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; }
+    .zoom-warn {
+      margin-top: 18px;
+      background: rgba(254, 243, 199, .16);
+      border: 1px solid rgba(253, 230, 138, .5);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: #fef9c3;
+    }
+    .zoom-warn strong { color: #fff; }
+
+    /* Layout */
+    main {
+      max-width: 960px;
+      margin: -40px auto 0;
+      padding: 0 20px 80px;
+    }
+    .section-title {
+      margin: 48px 4px 8px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .section-sub {
+      margin: 0 4px 24px;
+      color: var(--muted);
+    }
+
+    /* Class cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-head {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .date-badge {
+      flex: 0 0 auto;
+      width: 56px;
+      text-align: center;
+      background: var(--brand-soft);
+      color: var(--brand);
+      border-radius: 12px;
+      padding: 8px 0;
+      line-height: 1;
+    }
+    .date-badge .day { display: block; font-size: 22px; font-weight: 800; }
+    .date-badge .mon { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+    .card-head h3 { margin: 0; font-size: 16px; font-weight: 700; }
+    .card-head .weekday { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+    .time-chip {
+      display: inline-block;
+      margin-top: 7px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand);
+    }
+    .time-chip.morning { background: #fef3c7; color: #92400e; }
+
+    .card-body { padding: 16px 20px 20px; display: grid; gap: 12px; }
+    .resource {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      font-size: 14px;
+    }
+    .resource .label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #334155;
+      font-weight: 600;
+      min-width: 0;
+    }
+    .resource .label svg { width: 16px; height: 16px; flex: 0 0 auto; color: var(--brand); }
+    .pending {
+      background: var(--pending-bg);
+      color: var(--pending-ink);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .value-link {
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    /* Info block */
+    .info {
+      margin-top: 28px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .info h4 { margin: 0 0 8px; font-size: 16px; }
+    .info p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 32px 20px 48px;
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 48px 20px 60px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="eyebrow">Fundación Nikols · IIDEA</span>
+    <h1>Capacitación en Inteligencia Artificial aplicada al emprendimiento</h1>
+    <p>Herramientas de IA gratuitas para impulsar tu negocio, tus ventas y tu presencia digital — sin necesidad de conocimientos técnicos.</p>
+    <div class="meta">
+      <span>📅 Agosto 2026</span>
+      <span>💻 Modalidad virtual (Zoom)</span>
+      <span>🎓 Instructor: Daniel Ortiz</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="zoom-note">
+      <div class="zoom-note-icon">🔗</div>
+      <div class="zoom-note-body">
+        <h2>Enlace de Zoom — el mismo para todas las clases</h2>
+        <p class="lead">Todas las sesiones usan este mismo enlace. No cambia entre clases, así que puedes guardarlo y usarlo cada día.</p>
+        <a class="zoom-btn" href="https://us06web.zoom.us/j/84212131390?pwd=OwT26SgDEymQpLdvMRzNsHrMDIznNg.1" target="_blank" rel="noopener">Entrar a la reunión de Zoom →</a>
+        <div class="zoom-creds">
+          <div><span>ID de reunión</span><strong>842 1213 1390</strong></div>
+          <div><span>Código de acceso</span><strong>215133</strong></div>
+        </div>
+        <div class="zoom-warn">⚠️ <strong>Atención a los horarios:</strong> las clases del <strong>sábado 15</strong> y el <strong>sábado 22 de agosto</strong> son en la <strong>mañana (8:00 a. m.)</strong>. Todas las demás son a las <strong>8:00 p. m.</strong> (hora de Ecuador · Bogotá).</div>
+      </div>
+    </section>
+
+    <h2 class="section-title">Clases y recursos</h2>
+    <p class="section-sub">Aquí encontrarás el enlace de Zoom, la contraseña de la grabación y las diapositivas de cada sesión. Los recursos se irán publicando después de cada clase.</p>
+
+    <div class="grid" id="classes"></div>
+
+    <div class="info">
+      <h4>¿Cómo usar esta página?</h4>
+      <p>Antes de cada clase se activará el enlace de Zoom para conectarte en vivo. Después de cada sesión subiremos la contraseña para ver la grabación y el enlace a las diapositivas. Te recomendamos guardar esta página en tus favoritos para volver cuando quieras repasar.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Proyecto de Vinculación con la Sociedad — «Fortalecimiento de habilidades comerciales y emprendedoras: Habilidades digitales e IA» · Fundación Nikols · Ecuador 2026</p>
+  </footer>
+
+  <script>
+    // Icons
+    const icoVideo = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>';
+    const icoKey = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3"></path></svg>';
+    const icoSlides = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>';
+
+    // The Zoom link is the same recurring meeting for every class.
+    const ZOOM = "https://us06web.zoom.us/j/84212131390?pwd=OwT26SgDEymQpLdvMRzNsHrMDIznNg.1";
+
+    // Class definitions. The recording password ("password") and slides are filled after each class.
+    // To publish a resource, replace null with the value, e.g. password: "aB3$x9", slides: "https://..."
+    const classes = [
+      { n: 1, day: 12, weekday: "Miércoles", time: "8:00 p. m.", zoom: ZOOM, password: null, slides: null },
+      { n: 2, day: 14, weekday: "Viernes",   time: "8:00 p. m.", zoom: ZOOM, password: null, slides: null },
+      { n: 3, day: 15, weekday: "Sábado",    time: "8:00 a. m.", zoom: ZOOM, password: null, slides: null },
+      { n: 4, day: 19, weekday: "Miércoles", time: "8:00 p. m.", zoom: ZOOM, password: null, slides: null },
+      { n: 5, day: 21, weekday: "Viernes",   time: "8:00 p. m.", zoom: ZOOM, password: null, slides: null },
+      { n: 6, day: 22, weekday: "Sábado",    time: "8:00 a. m.", zoom: ZOOM, password: null, slides: null }
+    ];
+
+    const PENDING = '<span class="pending">Por agregar tras la clase</span>';
+
+    function resourceRow(icon, label, value, isLink) {
+      let right = PENDING;
+      if (value) {
+        right = isLink
+          ? '<a class="value-link" href="' + value + '" target="_blank" rel="noopener">Abrir</a>'
+          : '<span class="value-link">' + value + '</span>';
+      }
+      return '<div class="resource"><span class="label">' + icon + label + '</span>' + right + '</div>';
+    }
+
+    const container = document.getElementById('classes');
+    container.innerHTML = classes.map(function (c) {
+      return '' +
+        '<article class="card">' +
+          '<div class="card-head">' +
+            '<div class="date-badge"><span class="day">' + c.day + '</span><span class="mon">Ago</span></div>' +
+            '<div><h3>Clase ' + c.n + '</h3><p class="weekday">' + c.weekday + ' · ' + c.day + ' de agosto de 2026</p>' +
+              '<span class="time-chip' + (c.time.indexOf('a. m.') > -1 ? ' morning' : '') + '">🕗 ' + c.time + '</span></div>' +
+          '</div>' +
+          '<div class="card-body">' +
+            resourceRow(icoVideo, 'Enlace de Zoom', c.zoom, true) +
+            resourceRow(icoKey, 'Contraseña de grabación', c.password, false) +
+            resourceRow(icoSlides, 'Diapositivas', c.slides, true) +
+          '</div>' +
+        '</article>';
+    }).join('');
+  </script>
+</body>
+</html>
