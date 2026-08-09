@@ -126,6 +126,21 @@
     }
     .zoom-warn strong { color: #fff; }
 
+    /* WhatsApp note */
+    .wa-note {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-top: 16px;
+    }
+    .wa-note .wa-icon { font-size: 22px; line-height: 1; flex: 0 0 auto; }
+    .wa-note h3 { margin: 0 0 4px; font-size: 15px; color: #166534; }
+    .wa-note p { margin: 0; font-size: 14px; color: #14532d; }
+
     /* Layout */
     main {
       max-width: 960px;
@@ -228,6 +243,7 @@
       border-radius: 999px;
       white-space: nowrap;
     }
+    .pending.wa { background: #dcfce7; color: #166534; }
     .value-link {
       font-weight: 600;
       word-break: break-all;
@@ -286,6 +302,14 @@
       </div>
     </section>
 
+    <section class="wa-note">
+      <div class="wa-icon">💬</div>
+      <div>
+        <h3>Grupo de WhatsApp</h3>
+        <p>Toda la comunicación del curso se maneja por el grupo de WhatsApp. En la descripción del grupo encontrarás los detalles de cada clase, el enlace a esta página y las contraseñas de las grabaciones conforme se vayan publicando.</p>
+      </div>
+    </section>
+
     <h2 class="section-title">Clases y recursos</h2>
     <p class="section-sub">Aquí encontrarás el enlace de Zoom, la contraseña de la grabación y las diapositivas de cada sesión. Los recursos se irán publicando después de cada clase.</p>
 
@@ -315,9 +339,10 @@
     ];
 
     const PENDING = '<span class="pending">Disponible después de la clase</span>';
+    const PENDING_WA = '<span class="pending wa">Revisar en el grupo de WhatsApp</span>';
 
-    function resourceRow(icon, label, value, isLink) {
-      let right = PENDING;
+    function resourceRow(icon, label, value, isLink, pending) {
+      let right = pending || PENDING;
       if (value) {
         right = isLink
           ? '<a class="value-link" href="' + value + '" target="_blank" rel="noopener">Abrir</a>'
@@ -340,7 +365,7 @@
           '</div>' +
           '<div class="card-body">' +
             resourceRow(icoVideo, 'Enlace de Zoom', c.zoom, true) +
-            resourceRow(icoKey, 'Contraseña de grabación', c.password, false) +
+            resourceRow(icoKey, 'Contraseña de grabación', c.password, false, PENDING_WA) +
             resourceRow(icoSlides, 'Diapositivas', c.slides, true) +
           '</div>' +
         '</article>';
