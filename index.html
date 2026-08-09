@@ -188,7 +188,6 @@
       background: var(--brand-soft);
       color: var(--brand);
     }
-    .time-chip.morning { background: #fef3c7; color: #92400e; }
 
     .card-body { padding: 16px 20px 20px; display: grid; gap: 12px; }
     .resource {
@@ -263,7 +262,6 @@
       <div class="zoom-note-icon">🔗</div>
       <div class="zoom-note-body">
         <h2>Enlace de Zoom — el mismo para todas las clases</h2>
-        <p class="lead">El enlace no cambia entre sesiones, así que basta con guardarlo una vez.</p>
         <a class="zoom-btn" href="https://us06web.zoom.us/j/84212131390?pwd=OwT26SgDEymQpLdvMRzNsHrMDIznNg.1" target="_blank" rel="noopener">Entrar a la reunión de Zoom →</a>
         <div class="zoom-creds">
           <div><span>ID de reunión</span><strong>842 1213 1390</strong></div>
@@ -322,7 +320,7 @@
           '<div class="card-head">' +
             '<div class="date-badge"><span class="day">' + c.day + '</span><span class="mon">Ago</span></div>' +
             '<div><h3>Clase ' + c.n + '</h3><p class="weekday">' + c.weekday + ' · ' + c.day + ' de agosto de 2026</p>' +
-              '<span class="time-chip' + (c.time.indexOf('a. m.') > -1 ? ' morning' : '') + '">🕗 ' + c.time + '</span></div>' +
+              '<span class="time-chip">🕗 ' + c.time + '</span></div>' +
           '</div>' +
           '<div class="card-body">' +
             resourceRow(icoVideo, 'Enlace de Zoom', c.zoom, true) +
