@@ -13,8 +13,8 @@
       --ink: #0f172a;
       --muted: #64748b;
       --line: #e2e8f0;
-      --brand: #2563eb;
-      --brand-soft: #dbeafe;
+      --brand: #6d28d9;
+      --brand-soft: #ede9fe;
       --pending-bg: #fef3c7;
       --pending-ink: #92400e;
       --radius: 16px;
@@ -32,7 +32,7 @@
 
     /* Header */
     header {
-      background: radial-gradient(1200px 400px at 20% -10%, #1d4ed8 0%, transparent 60%), linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
+      background: radial-gradient(1200px 400px at 18% -10%, #7c3aed 0%, transparent 62%), linear-gradient(160deg, #1e1b4b 0%, #0f172a 100%);
       color: #fff;
       padding: 64px 24px 72px;
       text-align: center;
@@ -42,9 +42,9 @@
       font-size: 13px;
       letter-spacing: .08em;
       text-transform: uppercase;
-      color: #93c5fd;
-      background: rgba(37,99,235,.18);
-      border: 1px solid rgba(147,197,253,.35);
+      color: #c4b5fd;
+      background: rgba(124,58,237,.2);
+      border: 1px solid rgba(196,181,253,.35);
       padding: 6px 14px;
       border-radius: 999px;
       margin-bottom: 20px;
@@ -82,11 +82,11 @@
     /* Big Zoom note */
     .zoom-note {
       position: relative;
-      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      background: linear-gradient(135deg, #5b21b6, #7c3aed);
       color: #fff;
       border-radius: var(--radius);
       padding: 28px;
-      box-shadow: 0 14px 34px rgba(37,99,235,.32);
+      box-shadow: 0 14px 34px rgba(124,58,237,.32);
       display: flex;
       gap: 20px;
       align-items: flex-start;
@@ -98,14 +98,14 @@
     .zoom-btn {
       display: inline-block;
       background: #fff;
-      color: #1d4ed8;
+      color: #6d28d9;
       font-weight: 700;
       text-decoration: none;
       padding: 12px 22px;
       border-radius: 10px;
       font-size: 15px;
     }
-    .zoom-btn:hover { background: #eff6ff; }
+    .zoom-btn:hover { background: #f5f3ff; }
     .zoom-creds { display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0 0; }
     .zoom-creds > div {
       background: rgba(255,255,255,.12);
@@ -113,7 +113,7 @@
       border-radius: 10px;
       padding: 10px 16px;
     }
-    .zoom-creds span { display: block; font-size: 11px; color: #bfdbfe; text-transform: uppercase; letter-spacing: .05em; }
+    .zoom-creds span { display: block; font-size: 11px; color: #ddd6fe; text-transform: uppercase; letter-spacing: .05em; }
     .zoom-creds strong { font-size: 18px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; }
     .zoom-warn {
       margin-top: 18px;
@@ -298,7 +298,7 @@
       { n: 6, day: 22, weekday: "Sábado",    time: "8:00 a. m.", zoom: ZOOM, password: null, slides: null }
     ];
 
-    const PENDING = '<span class="pending">Por agregar tras la clase</span>';
+    const PENDING = '<span class="pending">Disponible después de la clase</span>';
 
     function resourceRow(icon, label, value, isLink) {
       let right = PENDING;
