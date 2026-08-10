@@ -140,6 +140,19 @@
     .wa-note .wa-icon { font-size: 22px; line-height: 1; flex: 0 0 auto; }
     .wa-note h3 { margin: 0 0 4px; font-size: 15px; color: #166534; }
     .wa-note p { margin: 0; font-size: 14px; color: #14532d; }
+    .wa-note p a { color: #15803d; font-weight: 600; }
+    .wa-btn {
+      display: inline-block;
+      margin-top: 12px;
+      background: #16a34a;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .wa-btn:hover { background: #15803d; }
 
     /* Layout */
     main {
@@ -221,7 +234,8 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      flex-wrap: wrap;
+      gap: 6px 12px;
       font-size: 14px;
     }
     .resource .label {
@@ -306,7 +320,8 @@
       <div class="wa-icon">💬</div>
       <div>
         <h3>Grupo de WhatsApp</h3>
-        <p>Toda la comunicación del curso se maneja por el grupo de WhatsApp. En la descripción del grupo encontrarás los detalles de cada clase, el enlace a esta página y las contraseñas de las grabaciones conforme se vayan publicando.</p>
+        <p>Toda la comunicación del curso se maneja por el <a href="https://chat.whatsapp.com/EnmZztnCS6c5mdpjeJEOpt?s=cl&amp;p=i&amp;mlu=4" target="_blank" rel="noopener">grupo de WhatsApp</a>. En la descripción del grupo encontrarás los detalles de cada clase, el enlace a esta página y las contraseñas de las grabaciones conforme se vayan publicando.</p>
+        <a class="wa-btn" href="https://chat.whatsapp.com/EnmZztnCS6c5mdpjeJEOpt?s=cl&amp;p=i&amp;mlu=4" target="_blank" rel="noopener">Unirse al grupo de WhatsApp →</a>
       </div>
     </section>
 
@@ -339,7 +354,7 @@
     ];
 
     const PENDING = '<span class="pending">Disponible después de la clase</span>';
-    const PENDING_WA = '<span class="pending wa">Revisar en el grupo de WhatsApp</span>';
+    const PENDING_WA = '<span class="pending wa">Revisar WhatsApp</span>';
 
     function resourceRow(icon, label, value, isLink, pending) {
       let right = pending || PENDING;
