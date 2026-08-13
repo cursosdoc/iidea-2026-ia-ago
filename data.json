@@ -1,0 +1,11 @@
+{
+  "zoom": "https://us06web.zoom.us/j/84212131390?pwd=OwT26SgDEymQpLdvMRzNsHrMDIznNg.1",
+  "classes": [
+    { "n": 1, "day": 12, "weekday": "Miércoles", "time": "8:00 p. m.", "title": "Marketing digital con IA",    "recording": "https://us06web.zoom.us/rec/share/SMO11lzeleRwcDQMacIaWvGyJEG5DfnF-SxW81gEfzhJzTy5DUZV7ve_n35EviPt.SIdhawBiQB482IMT?startTime=1786582205000", "password": null, "slides": "slides/clase-01-marketing.pdf" },
+    { "n": 2, "day": 14, "weekday": "Viernes",   "time": "8:00 p. m.", "title": "E-commerce: vende en línea",   "recording": null, "password": null, "slides": null },
+    { "n": 3, "day": 15, "weekday": "Sábado",    "time": "8:00 a. m.", "title": "Compara y domina las IA",      "recording": null, "password": null, "slides": null },
+    { "n": 4, "day": 19, "weekday": "Miércoles", "time": "8:00 p. m.", "title": "Tus documentos y visuales",    "recording": null, "password": null, "slides": null },
+    { "n": 5, "day": 21, "weekday": "Viernes",   "time": "8:00 p. m.", "title": "Ventas, métricas y asistente", "recording": null, "password": null, "slides": null },
+    { "n": 6, "day": 22, "weekday": "Sábado",    "time": "8:00 a. m.", "title": "Tu catálogo web y cobros",     "recording": null, "password": null, "slides": null }
+  ]
+}

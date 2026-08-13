@@ -37,6 +37,16 @@
       padding: 64px 24px 72px;
       text-align: center;
     }
+    header .brand-logo {
+      display: flex;
+      width: fit-content;
+      background: #fff;
+      padding: 12px 24px;
+      border-radius: 14px;
+      margin: 0 auto 20px;
+      box-shadow: 0 8px 22px rgba(0,0,0,.22);
+    }
+    header .brand-logo img { height: 38px; display: block; }
     header .eyebrow {
       display: inline-block;
       font-size: 13px;
@@ -294,7 +304,8 @@
 </head>
 <body>
   <header>
-    <span class="eyebrow">Fundación Nikols · IIDEA</span>
+    <div class="brand-logo"><img src="assets/iidea-logo.png" alt="IIDEA" /></div>
+    <span class="eyebrow">En colaboración con Fundación Nikols</span>
     <h1>Fortalecimiento de habilidades comerciales y emprendedoras: Habilidades digitales e IA</h1>
     <p>Introducción a herramientas de IA gratuitas para impulsar tu negocio, tus ventas y tu presencia digital.</p>
     <div class="meta">
@@ -340,19 +351,8 @@
     const icoSlides = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>';
     const icoRec = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>';
 
-    // The Zoom link is the same recurring meeting for every class.
-    const ZOOM = "https://us06web.zoom.us/j/84212131390?pwd=OwT26SgDEymQpLdvMRzNsHrMDIznNg.1";
-
-    // Class definitions. The recording password ("password") and slides are filled after each class.
-    // To publish a resource, replace null with the value, e.g. password: "aB3$x9", slides: "https://..."
-    const classes = [
-      { n: 1, day: 12, weekday: "Miércoles", time: "8:00 p. m.", title: "Marketing digital con IA",    zoom: ZOOM, recording: "https://us06web.zoom.us/rec/share/SMO11lzeleRwcDQMacIaWvGyJEG5DfnF-SxW81gEfzhJzTy5DUZV7ve_n35EviPt.SIdhawBiQB482IMT?startTime=1786582205000", password: null, slides: "slides/clase-01-marketing.pdf" },
-      { n: 2, day: 14, weekday: "Viernes",   time: "8:00 p. m.", title: "E-commerce: vende en línea",   zoom: ZOOM, recording: null, password: null, slides: null },
-      { n: 3, day: 15, weekday: "Sábado",    time: "8:00 a. m.", title: "Compara y domina las IA",      zoom: ZOOM, recording: null, password: null, slides: null },
-      { n: 4, day: 19, weekday: "Miércoles", time: "8:00 p. m.", title: "Tus documentos y visuales",    zoom: ZOOM, recording: null, password: null, slides: null },
-      { n: 5, day: 21, weekday: "Viernes",   time: "8:00 p. m.", title: "Ventas, métricas y asistente", zoom: ZOOM, recording: null, password: null, slides: null },
-      { n: 6, day: 22, weekday: "Sábado",    time: "8:00 a. m.", title: "Tu catálogo web y cobros",     zoom: ZOOM, recording: null, password: null, slides: null }
-    ];
+    // Class data lives in data.json — a single source fetched fresh on every page load
+    // (cache-busted + no-store), so students always see the latest links without force-refresh.
 
     const PENDING = '<span class="pending">Disponible después de la clase</span>';
     const PENDING_WA = '<span class="pending wa">Revisar WhatsApp</span>';
@@ -368,7 +368,8 @@
     }
 
     const container = document.getElementById('classes');
-    container.innerHTML = classes.map(function (c) {
+
+    function cardHtml(c, zoom) {
       return '' +
         '<article class="card">' +
           '<div class="card-head">' +
@@ -380,13 +381,23 @@
             '</div>' +
           '</div>' +
           '<div class="card-body">' +
-            resourceRow(icoVideo, 'Enlace de Zoom', c.zoom, true) +
+            resourceRow(icoVideo, 'Enlace de Zoom', zoom, true) +
             resourceRow(icoRec, 'Grabación', c.recording, true, null, 'Ver grabación') +
             resourceRow(icoKey, 'Contraseña de grabación', c.password, false, PENDING_WA) +
             resourceRow(icoSlides, 'Diapositivas', c.slides, true, null, 'Descargar PDF') +
           '</div>' +
         '</article>';
-    }).join('');
+    }
+
+    // Fetch fresh on every load so cached HTML never shows stale class links.
+    fetch('data.json?t=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(function (data) {
+        container.innerHTML = (data.classes || []).map(function (c) { return cardHtml(c, data.zoom); }).join('');
+      })
+      .catch(function () {
+        container.innerHTML = '<p style="color:var(--muted);padding:8px 4px">No se pudieron cargar las clases en este momento. Recarga la página.</p>';
+      });
   </script>
 </body>
 </html>
