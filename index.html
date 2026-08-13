@@ -338,6 +338,7 @@
     const icoVideo = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>';
     const icoKey = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3"></path></svg>';
     const icoSlides = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>';
+    const icoRec = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>';
 
     // The Zoom link is the same recurring meeting for every class.
     const ZOOM = "https://us06web.zoom.us/j/84212131390?pwd=OwT26SgDEymQpLdvMRzNsHrMDIznNg.1";
@@ -345,22 +346,22 @@
     // Class definitions. The recording password ("password") and slides are filled after each class.
     // To publish a resource, replace null with the value, e.g. password: "aB3$x9", slides: "https://..."
     const classes = [
-      { n: 1, day: 12, weekday: "Miércoles", time: "8:00 p. m.", title: "Marketing digital con IA",    zoom: ZOOM, password: null, slides: null },
-      { n: 2, day: 14, weekday: "Viernes",   time: "8:00 p. m.", title: "E-commerce: vende en línea",   zoom: ZOOM, password: null, slides: null },
-      { n: 3, day: 15, weekday: "Sábado",    time: "8:00 a. m.", title: "Compara y domina las IA",      zoom: ZOOM, password: null, slides: null },
-      { n: 4, day: 19, weekday: "Miércoles", time: "8:00 p. m.", title: "Tus documentos y visuales",    zoom: ZOOM, password: null, slides: null },
-      { n: 5, day: 21, weekday: "Viernes",   time: "8:00 p. m.", title: "Ventas, métricas y asistente", zoom: ZOOM, password: null, slides: null },
-      { n: 6, day: 22, weekday: "Sábado",    time: "8:00 a. m.", title: "Tu catálogo web y cobros",     zoom: ZOOM, password: null, slides: null }
+      { n: 1, day: 12, weekday: "Miércoles", time: "8:00 p. m.", title: "Marketing digital con IA",    zoom: ZOOM, recording: "https://us06web.zoom.us/rec/share/SMO11lzeleRwcDQMacIaWvGyJEG5DfnF-SxW81gEfzhJzTy5DUZV7ve_n35EviPt.SIdhawBiQB482IMT?startTime=1786582205000", password: null, slides: "slides/clase-01-marketing.pdf" },
+      { n: 2, day: 14, weekday: "Viernes",   time: "8:00 p. m.", title: "E-commerce: vende en línea",   zoom: ZOOM, recording: null, password: null, slides: null },
+      { n: 3, day: 15, weekday: "Sábado",    time: "8:00 a. m.", title: "Compara y domina las IA",      zoom: ZOOM, recording: null, password: null, slides: null },
+      { n: 4, day: 19, weekday: "Miércoles", time: "8:00 p. m.", title: "Tus documentos y visuales",    zoom: ZOOM, recording: null, password: null, slides: null },
+      { n: 5, day: 21, weekday: "Viernes",   time: "8:00 p. m.", title: "Ventas, métricas y asistente", zoom: ZOOM, recording: null, password: null, slides: null },
+      { n: 6, day: 22, weekday: "Sábado",    time: "8:00 a. m.", title: "Tu catálogo web y cobros",     zoom: ZOOM, recording: null, password: null, slides: null }
     ];
 
     const PENDING = '<span class="pending">Disponible después de la clase</span>';
     const PENDING_WA = '<span class="pending wa">Revisar WhatsApp</span>';
 
-    function resourceRow(icon, label, value, isLink, pending) {
+    function resourceRow(icon, label, value, isLink, pending, linkText) {
       let right = pending || PENDING;
       if (value) {
         right = isLink
-          ? '<a class="value-link" href="' + value + '" target="_blank" rel="noopener">Abrir</a>'
+          ? '<a class="value-link" href="' + value + '" target="_blank" rel="noopener">' + (linkText || 'Abrir') + '</a>'
           : '<span class="value-link">' + value + '</span>';
       }
       return '<div class="resource"><span class="label">' + icon + label + '</span>' + right + '</div>';
@@ -380,8 +381,9 @@
           '</div>' +
           '<div class="card-body">' +
             resourceRow(icoVideo, 'Enlace de Zoom', c.zoom, true) +
+            resourceRow(icoRec, 'Grabación', c.recording, true, null, 'Ver grabación') +
             resourceRow(icoKey, 'Contraseña de grabación', c.password, false, PENDING_WA) +
-            resourceRow(icoSlides, 'Diapositivas', c.slides, true) +
+            resourceRow(icoSlides, 'Diapositivas', c.slides, true, null, 'Descargar PDF') +
           '</div>' +
         '</article>';
     }).join('');
