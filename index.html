@@ -350,6 +350,7 @@
     const icoKey = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3"></path></svg>';
     const icoSlides = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>';
     const icoRec = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>';
+    const icoLab = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L4.8 17.6A2 2 0 0 0 6.6 20.6h10.8a2 2 0 0 0 1.8-3L14 9.5V3"></path><line x1="7.5" y1="14.5" x2="16.5" y2="14.5"></line></svg>';
 
     // Class data lives in data.json — a single source fetched fresh on every page load
     // (cache-busted + no-store), so students always see the latest links without force-refresh.
@@ -385,6 +386,7 @@
             resourceRow(icoRec, 'Grabación', c.recording, true, null, 'Ver grabación') +
             resourceRow(icoKey, 'Contraseña de grabación', c.password, false, PENDING_WA) +
             resourceRow(icoSlides, 'Diapositivas', c.slides, true, null, 'Descargar PDF') +
+            (c.lab ? resourceRow(icoLab, 'Laboratorio', c.lab, true, null, 'Abrir laboratorio') : '') +
           '</div>' +
         '</article>';
     }
