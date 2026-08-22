@@ -35,7 +35,7 @@
       "n": 6, "day": 22, "weekday": "Sábado", "time": "8:00 a. m.",
       "title": "Cierre",
       "description": "Casos reales de negocios que ya aplicaron lo visto en el curso, más cómo conectar el catálogo con pagos en Ecuador y cerrar el círculo con WhatsApp.",
-      "recording": null, "password": null, "slides": null, "cheatsheet": "labs/mapa-de-herramientas-del-curso.pdf"
+      "recording": null, "password": null, "slides": "slides/clase-06-cerrar-el-ciclo.pdf", "cheatsheet": "labs/mapa-de-herramientas-del-curso.pdf"
     }
   ]
 }
