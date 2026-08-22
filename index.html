@@ -272,6 +272,7 @@
       font-weight: 600;
       word-break: break-all;
     }
+    .card-head-text .description { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: var(--muted); }
 
     /* Info block */
     .info {
@@ -379,6 +380,7 @@
               '<span class="clase-label">Clase ' + c.n + '</span>' +
               '<h3>' + c.title + '</h3>' +
               '<p class="weekday">' + c.weekday + ' · ' + c.day + ' de agosto · ' + c.time + '</p>' +
+              (c.description ? '<p class="description">' + c.description + '</p>' : '') +
             '</div>' +
           '</div>' +
           '<div class="card-body">' +
