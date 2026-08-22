@@ -29,13 +29,13 @@
       "n": 5, "day": 21, "weekday": "Viernes", "time": "8:00 p. m.",
       "title": "Analizar, medir y automatizar",
       "description": "Los números del negocio: analizar tus ventas con IA, ordenarlas en una hoja, armar un tablero que se actualiza solo, y crear un asistente propio con el contexto de tu negocio.",
-      "recording": null, "password": null, "slides": "slides/clase-05-vender-medir.pdf?v=2", "lab": "labs/clase-05-laboratorio.pdf"
+      "recording": "https://us06web.zoom.us/rec/share/Mb1Ddz-cCKkWF5ac6zhIK1s_wX_zqcxnv4UhiAzxPA_e7hLdEyd-D6mj2QSeGVwH.z3_kI-XC-UGtN_6j", "password": null, "slides": "slides/clase-05-vender-medir.pdf?v=2", "lab": "labs/clase-05-laboratorio.pdf"
     },
     {
       "n": 6, "day": 22, "weekday": "Sábado", "time": "8:00 a. m.",
       "title": "Cierre",
       "description": "Casos reales de negocios que ya aplicaron lo visto en el curso, más cómo conectar el catálogo con pagos en Ecuador y cerrar el círculo con WhatsApp.",
-      "recording": null, "password": null, "slides": null
+      "recording": null, "password": null, "slides": null, "cheatsheet": "labs/mapa-de-herramientas-del-curso.pdf"
     }
   ]
 }
