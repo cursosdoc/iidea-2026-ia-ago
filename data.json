@@ -5,7 +5,7 @@
     { "n": 2, "day": 14, "weekday": "Viernes",   "time": "8:00 p. m.", "title": "E-commerce: vende en línea",   "recording": "https://us06web.zoom.us/rec/share/J5GrRiPRwr3tnQzzJDaiQDS0t8iSa9qs9G9fSaN27gWgxWaasryq6zhDfld0ouyp.jmiUGTl-zcTqnShO?startTime=1786755348000", "password": null, "slides": "slides/clase-02-ecommerce.pdf" },
     { "n": 3, "day": 15, "weekday": "Sábado",    "time": "8:00 a. m.", "title": "Compara y domina las IA",      "recording": "https://us06web.zoom.us/rec/share/u1ZHDZ7XgOSv3O21hE69YQ7wVz6cbzmzcIPAZccGZPi_6jtfbR4SHEV7CPMa-usD.2eXDbnOvHdyfkDiD", "password": null, "slides": "slides/clase-03-ia-aplicada.pdf", "lab": "labs/clase-03-laboratorio.pdf" },
     { "n": 4, "day": 19, "weekday": "Miércoles", "time": "8:00 p. m.", "title": "Tus documentos y visuales",    "recording": "https://us06web.zoom.us/rec/share/l-YDSn0MukEcP7UT9mnafbpebAnFOnNRfwOHXVKM_VoAK8fkVvULu7Er1261w17b.zU3mZ2R0M-05SKA9", "password": null, "slides": "slides/clase-04-crear.pdf", "lab": "labs/clase-04-laboratorio.pdf" },
-    { "n": 5, "day": 21, "weekday": "Viernes",   "time": "8:00 p. m.", "title": "Ventas, métricas y asistente", "recording": null, "password": null, "slides": "slides/clase-05-vender-medir.pdf", "lab": "labs/clase-05-laboratorio.pdf" },
+    { "n": 5, "day": 21, "weekday": "Viernes",   "time": "8:00 p. m.", "title": "Ventas, métricas y asistente", "recording": null, "password": null, "slides": "slides/clase-05-vender-medir.pdf?v=2", "lab": "labs/clase-05-laboratorio.pdf" },
     { "n": 6, "day": 22, "weekday": "Sábado",    "time": "8:00 a. m.", "title": "Tu catálogo web y cobros",     "recording": null, "password": null, "slides": null }
   ]
 }
